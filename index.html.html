@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Love</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(to right, #ff758c, #ff9a9e, #ff7eb3, #ff758c);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: linear-gradient(to bottom, #77b6ea, #a7e9af);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+            z-index: 1;
+            position: relative;
+        }
+
+        button {
+            background: #ff758c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        button a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .heart {
+            position: absolute;
+            top: -50px;
+            color: rgba(255, 255, 255, 0.7);
+            animation: falling linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes falling {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Happy Birthday, My Love 🤍</h1>
+        <p>💖</p>
+        <p>May your day be filled with love, laughter, and unforgettable memories. 💗✨<br><br>
+            Itha Pakkurathuku Munndai Varaikkum Ne Siruchutu Irunthurupayo Ennamodi 👀....Ana Ithu Rompa Mosama Irukum Di(Chii 😹) Ne Adjust Pannipa Nu Therium Di 😁...<br><br>Ana Onnu Di Ne Itha Pakkum Pothu Na Vekkathula irupen Di🫣<br><br>Unakaga Un Asai Kadhalan😩💙<br><br>CRINGE ALERT🐻<br><br>Press It...👇🏿
+        </p>
+    </div>
+
+    <script>
+        // Create falling hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        
+        setInterval(createHeart, 300);
+
+        // Dynamically create the button
+        const button = document.createElement('button');
+        const buttonLink = document.createElement('a');
+        buttonLink.href = '2LOVE.html';
+        buttonLink.innerHTML = '💖';
+        button.appendChild(buttonLink);
+
+        // Add the button to the container
+        const container = document.querySelector('.container');
+        container.appendChild(button);
+    </script>
+</body>
+</html>

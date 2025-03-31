@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Proposal</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to right, #ff758c, #ff9a9e, #ff7eb3, #ff758c);
+            color: white;
+            position: relative;
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(to right, #77b6ea, #a7e9af);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            z-index: 100;
+            color: black;
+        }
+
+        .popup button {
+            background-color: #ff477e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.3);
+            color: black;
+            z-index: 1;
+            position: relative;
+            display: none;
+            background: linear-gradient(to right, #77b6ea, #a7e9af);
+            color: white;
+        }
+
+        .word {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 8px;
+            color: #ff477e;
+        }
+
+        .message {
+            margin-top: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff477e;
+        }
+
+        input {
+            font-size: 18px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .button {
+            background-color: #ff477e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-100px);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        .heart-buttonn {
+            margin-top: 20px;
+            background: rgb(100, 140, 248);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="popup">
+        <p> ADUTHU PAKKANUMA DI PANNI 💟👀?</p>
+        <button onclick="acceptProposal()">Ama😅</button>
+        <button onclick="acceptProposall()">Mudiyathu🙃</button>
+    </div>
+
+    <div class="container" id="quizContent">
+        <h1>Velaiyaduvomaa Ippa💌</h1>
+        <h2>Muduncha Kandupudi Di😹</h2>
+        <h2>Eppaumey💕</h2>
+        <div id="word" class="word">_ _ _ _ _ _ _ _</div>
+        <input type="text" id="letter" maxlength="1" />
+        <button class="button" id="guessBtn">Guess</button>
+
+        <div class="message" id="message"></div>
+        <center><button class="heart-buttonn" onclick="goToPage()">&#10084;</button></center>
+    </div>
+
+    <script>
+        let wordToGuess = "ILOVEYOU";
+        let guessedLetters = [];
+
+        function acceptProposal() {
+            alert('GOOD GIRL 👻');
+            document.querySelector('.popup').style.display = 'none';
+            document.getElementById('quizContent').style.display = 'block';
+        }
+
+        function acceptProposall(){
+            alert('NE ENNADI SOLLURATHU VENNA 😼'); 
+            document.querySelector('.popup').style.display = 'none';
+            document.getElementById('quizContent').style.display = 'block';
+        }
+
+        function displayWord() {
+            const wordDisplay = wordToGuess.split('').map(letter => guessedLetters.includes(letter) ? letter : '_').join(' ');
+            document.getElementById('word').textContent = wordDisplay;
+
+            if (!wordDisplay.includes('_')) {
+                document.getElementById('message').innerHTML = "🎉 Ahh Ahh Love You Love You😼🌙";
+            }
+        }
+
+        document.getElementById('guessBtn').addEventListener('click', makeGuess);
+        document.getElementById('letter').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                makeGuess();
+            }
+        });
+
+        function makeGuess() {
+            const letterInput = document.getElementById('letter').value.toUpperCase();
+            if (!letterInput) {
+                document.getElementById('message').innerHTML = "Type Pannu Di Mayiru";
+                return;
+            }
+            if (guessedLetters.includes(letterInput)) {
+                document.getElementById('message').innerHTML = "Already Guessed Di! 🔄";
+                return;
+            }
+            if (wordToGuess.includes(letterInput)) {
+                guessedLetters.push(letterInput);
+                document.getElementById('letter').value = '';
+                displayWord();
+            } else {
+                document.getElementById('message').innerHTML = "Wrong Letter Di! ❌";
+            }
+        }
+
+        function goToPage() {
+            window.location.href = "ALTERRRR.html";
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>

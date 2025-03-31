@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Last</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(to right, #ff758c, #ff9a9e, #ff7eb3, #ff758c);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Scrolling text */
+        @keyframes scrollLeft {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        @keyframes scrollRight {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .scroll-text {
+            font-size: 50px;
+            font-weight: bold;
+            position: absolute;
+            width: 100%;
+            white-space: nowrap;
+        }
+        .scroll1 { 
+            animation: scrollLeft 5s linear infinite; 
+            color: #ff4081;
+            top: 20%;
+        }
+        .scroll2 { 
+            animation: scrollRight 5s linear infinite; 
+            color: #fd635e;
+            top: 30%;
+        }
+        .scroll3 {
+            animation: scrollLeft 6s linear infinite;
+            color: #000;
+            top: 70%;
+        }
+        .scroll4 {
+            animation: scrollRight 6s linear infinite;
+            color: #ffa500;
+            top: 80%;
+        }
+
+        /* Moving love message */
+        .moving-text {
+            font-size: 40px;
+            font-weight: bold;
+            position: absolute;
+            width: 100%;
+            white-space: nowrap;
+        }
+        .move1 {
+            animation: scrollLeft 6s linear infinite;
+            color:#f74f54;
+            top: 50%;
+        }
+        .move2 {
+            animation: scrollRight 6s linear infinite;
+            color:#ff4081;
+            top: 60%;
+        }
+
+        /* Falling hearts */
+        .heart {
+            position: absolute;
+            top: -50px;
+            color: rgba(255, 0, 0, 0.7);
+            animation: falling linear infinite;
+            font-size: 24px;
+        }
+        @keyframes falling {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scrolling Messages -->
+    <div class="scroll-text scroll1">🎉 HAPPY BIRTHDAY DI PONDATTI 🎂</div>
+    <div class="scroll-text scroll2">AVALODHANDA MUDUNCHU</div>
+    <div class="scroll-text scroll3">🐼</div>
+    <div class="scroll-text scroll4">🐥</div>
+
+    <!-- Moving Love Message -->
+    <div class="moving-text move1">UMMAAAAAAA DA THANGOOOOO 💖</div>
+    <div class="moving-text move2">LOVE YOU ❤️</div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>

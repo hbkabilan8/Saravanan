@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Wishes</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff758c, #ff9a9e, #ff7eb3, #ff758c);
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            width: 400px;
+            height: 550px;
+            position: relative;
+            overflow: hidden;
+        }
+        .page {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.6s ease-in-out;
+            transform: translateX(100%);
+        }
+        #page1 { background: #75f1d7; }
+        #page2 { background: #ffcccb; }
+        #page3 { background: #d8bfd8; }
+        #page4 { background: #b0e0e6; }
+        #page5 { background: #babef5; }
+        
+        .visible {
+            transform: translateX(0);
+        }
+
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-100px);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        .heart-button {
+            margin-top: 20px;
+            background: rgb(100, 140, 248);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page visible" id="page1">
+            <h2>HAPPY BIRTH DAY DA THANGAAA PULLA💙😩</h2>
+            <p>Sandosama Iru Di Na Eppaum Unakaga <br>
+                Irupen Da🐣✨</p>
+            <button class="heart-button" onclick="nextPage(1)">&#10084;</button>
+        </div>
+        <div class="page" id="page2">
+            <h2>🐽</h2>
+            <p>Alu Mattu Than Ma Valanthurukka Ana <br>Ne Ennaku Pacha Kolantha di🍼🍫</p>
+            <button class="heart-button" onclick="nextPage(2)">&#10084;</button>
+        </div>
+        <div class="page" id="page3">
+            <h2>🐼</h2>
+            <p>Unna Love Panna Nall La Irunthu Na Rompa Sandhosama iruken Di Unnala...<br>Enna Than En Life La Naraiya Peru Irunthalum <br>Ennaku Ne Mattum Than Da Mukkiyam🦋🥰</p>
+            <button class="heart-button" onclick="nextPage(3)">&#10084;</button>
+        </div>
+        <div class="page" id="page4">
+            <h2>🫀</h2>
+            <p>Na Kadaikka Maten Nu Kavalapadatha Di🤧....<br>Na Unniya Than Di kalyanam <br>Pannuven Enna analum🥺....Entha Oru Problem <br>Nalum Na Unakaga Nippen Di🤍....Na Iruken Di Pathukalam Ethunalum🫂</p>
+            <button class="heart-button" onclick="nextPage(4)">&#10084;</button>
+        </div>
+        <div class="page" id="page5">
+            <h2>🤭</h2>
+            <p>Ennaku Enna Sollaney Thrla Di Chelloww😸...<br>Love Va Sollitu Unga Amma Ta Ithalam Kaami Di<br> Enna Solluraganu Papom👀...<br>Ethulam Oru Gift Ta Nu Solluvaga Ana Ennala IvaloThanda PannaMudium😩Na Velaikku Poitu<br> Un BirthDay ku Ne MarakkaMudiyathu Gift Lam Kudupen Di💝...Na Eppidi Nu Na Solla<br> Thevailla Di 😜En Asa Rosa Unake<br> Therium Di Enniyaa Pathi😁🥰<br>
+                <br>I LOVE YOU DI 😩🫶🤍<p>
+            <button class="heart-button" onclick="window.location.href='3LOVE.html'">&#10084;</button>
+        </div>
+    </div>
+
+    <script>
+        function nextPage(current) {
+            document.getElementById('page' + current).classList.remove('visible');
+            const next = current + 1;
+            if (next <= 5) {
+                document.getElementById('page' + next).classList.add('visible');
+            }
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>

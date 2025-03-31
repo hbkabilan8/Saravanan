@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #ff758c, #ff7eb3);
+            color: white;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            animation: fall 5s linear infinite;
+        }
+        @keyframes fall {
+            from {
+                transform: translateY(-100px);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.3);
+            color: black;
+            z-index: 1;
+            position: relative;
+            background: linear-gradient(to right, #77b6ea, #a7e9af);
+            color: white;
+            text-align: center;
+            margin-top: 100px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            transition: 0.3s;
+        }
+        .yes {
+            background-color: #28a745;
+            color: white;
+        }
+        .yes:hover {
+            background-color: #218838;
+        }
+        .no {
+            background-color: #dc3545;
+            color: white;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="Crazy">
+        <h1>Athu Kulla Eppidi Muidpen😁</h1>
+        <h2>kekura Question La Ne Katharanum...👧🏽🥶</h2>
+        <h2>AMMA TA INNAIKU LOVE SOLLU😹?</h2>
+        <div class="buttons">
+            <button class="button yes" onclick="showMessage()">SOLLUREN😽</button>
+            <button class="button no" id="noButton">SOLLAMATEN 🤣</button>
+        </div>
+        <p id="message" style="font-size: 20px; margin-top: 20px;"></p>
+    </div>
+    <script>
+        function showMessage() {
+            document.getElementById("message").innerText = "APPE OK OK 😊";
+            setTimeout(function() {
+                window.location.href = "4LOVE.html";
+            }, 5000);
+        }
+
+        document.getElementById("noButton").addEventListener("mouseover", function() {
+            let button = this;
+            let maxX = window.innerWidth - button.offsetWidth;
+            let maxY = window.innerHeight - button.offsetHeight;
+            let x = Math.random() * maxX;
+            let y = Math.random() * maxY;
+            button.style.position = "absolute";
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        });
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>

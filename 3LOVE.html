@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oru Game Muduchuruvom</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #ff758c, #ff7eb3);
+            color: white;
+        }
+        h1 {
+            margin-top: 50px;
+            font-size: 2rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .button-container {
+            margin-top: 50px;
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-100px);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+        .game-button {
+            font-size: 20px;
+            padding: 15px 30px;
+            margin: 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .game-button:hover {
+            transform: scale(1.1);
+        }
+        /* Different colors for buttons */
+        .btn1 { background: #ff4757; color: white; }
+        .btn2 { background: #1e90ff; color: white; }
+        .btn3 { background: #2ed573; color: white; }
+        .btn4 { background: #ffa502; color: white; }
+        .btn5 { background: #ff7eb3; color: white; }
+
+        /* Animation for wrong answer */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+        .shake {
+            animation: shake 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🕹️ Oru Game Muduchuruvom 🎮😆</h1>
+    <p>Correct Ta Thodu Innoru Gift iruku Ulla!🐦‍🔥👀</p>
+
+    <div class="button-container">
+        <button class="game-button btn1" onclick="checkAnswer(1)">🐽 Panni</button>
+        <button class="game-button btn2" onclick="checkAnswer(2)">👻 Peeii</button>
+        <button class="game-button btn3" onclick="checkAnswer(3)">👹 Poochandi</button><br>
+        <button class="game-button btn4" onclick="checkAnswer(4)">🐃 Eruma</button>
+        <button class="game-button btn5" onclick="checkAnswer(5)">😁 SKIP</button>
+    </div>
+
+    
+    <script>
+    let correctButton = 5; // SKIP button is always correct
+
+    function checkAnswer(buttonNumber) {
+        if (buttonNumber === correctButton) {
+            alert("TRY PANNU DA THANGOO...🫂");
+            setTimeout(() => {
+                window.location.href = "6LOVE.html"; // Redirect to 6LOVE.html
+            }, 1000); // Delay for effect
+        } else {
+            document.body.classList.add("shake");
+            setTimeout(() => document.body.classList.remove("shake"), 300);
+            alert(" ITHUVUM ELLA DI🦴");
+        }
+    }
+
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+        heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }
+
+    setInterval(createHeart, 300);
+</script>
+
+
+
+</body>
+</html>
